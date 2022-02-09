@@ -26,7 +26,7 @@ public class CosmosConfiguration {
     private String endpoint;
 
     @Bean
-	public CosmosClientBuilder cosmosClient() {
+    public CosmosClientBuilder cosmosClient() {
     	DirectConnectionConfig directConnectionConfig = DirectConnectionConfig.getDefaultConfig();
         GatewayConnectionConfig gatewayConnectionConfig = new GatewayConnectionConfig();
         
@@ -37,9 +37,9 @@ public class CosmosConfiguration {
                 .gatewayMode(gatewayConnectionConfig);
      }
 
-	@EnableReactiveCosmosRepositories(basePackages = "com.azure.cosmosdemo.demo",
-        reactiveCosmosTemplateRef = "databaseTemplate")
-    public class Database1Configuration extends AbstractCosmosConfiguration {
+     @EnableReactiveCosmosRepositories(basePackages = "com.azure.cosmosdemo.demo",
+                                       reactiveCosmosTemplateRef = "databaseTemplate")
+     public class DatabaseConfiguration extends AbstractCosmosConfiguration {
 
         @Bean
         public ReactiveCosmosTemplate databaseTemplate(CosmosAsyncClient cosmosAsyncClient,
