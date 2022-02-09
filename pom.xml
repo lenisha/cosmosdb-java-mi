@@ -9,13 +9,16 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.azure.cosmosdemo</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>demo-cosmos</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>11</java.version>
 		<azure.version>3.12.1</azure.version>
+		<start-class>com.azure.cosmosdemo.demo.DemoApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,11 +42,7 @@
 			<artifactId>azure-identity</artifactId>
 			<version>1.4.3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+	
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -62,6 +61,26 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				
+			</plugin>
+
+			<plugin>
+				<artifactId>jib-maven-plugin</artifactId>
+				<groupId>com.google.cloud.tools</groupId>
+				<version>3.1.4</version>
+				<configuration>
+				   <from>
+						<image>mcr.microsoft.com/java/jdk:8-zulu-alpine</image>
+					</from>	 						
+					<to>
+						<image>acraccess.azurecr.io/${project.artifactId}</image>
+						<!--<credHelper>acr-linux</credHelper>-->
+					</to>
+					<container>
+						<mainClass>com.azure.cosmosdemo.demo.DemoApplication</mainClass>
+ 						
+					</container>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

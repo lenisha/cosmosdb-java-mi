@@ -31,6 +31,7 @@
 		"git": "latest",
 		"azure-cli": "latest",
 		"java": "11",
-		"maven": "latest"
+		"maven": "latest",
+		"kubectl-helm-minikube": "latest"
 	}
 }

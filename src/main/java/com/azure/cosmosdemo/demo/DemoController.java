@@ -21,14 +21,12 @@ public class DemoController {
     private UserRepository repository;
 
   
-    @RequestMapping(value="/users", method= RequestMethod.GET, headers="Accept=application/xml, application/json")
-    @ResponseBody
+    @RequestMapping(value="/users", method= RequestMethod.GET, produces = {"application/json"})
     public Flux<User> users() {
         return repository.findAll();
     }
 
-    @RequestMapping(value="/add/{name}", method= RequestMethod.GET, headers="Accept=application/xml, application/json")
-    @ResponseBody
+    @RequestMapping(value="/add/{name}", method= RequestMethod.GET, produces = {"application/json"})
     public Mono<User> create(@PathVariable String name) {
        
         final User testUser = new User( name, "testLastName", "test address line one");
